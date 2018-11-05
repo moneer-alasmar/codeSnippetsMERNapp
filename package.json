@@ -1,0 +1,11 @@
+{
+  "name": "codesnippets",
+  "version": "1.0.0",
+  "description": "code snippet app built with MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moneer Alasmar",
+  "license": "MIT"
+}
