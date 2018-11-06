@@ -7,20 +7,17 @@ import {
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { getSnippets } from '../actions/SnippetActions';
+import PropTypes from 'prop-types';
 
-class ShoppingList extends Component {
-  state = {
-    snippets: [
-      { id: uuid(), title: 'JavaScript', snippet: 'console.log(123)'},
-      { id: uuid(), title: 'JavaScript ES6', snippet: 'console.log(456)'},
-      { id: uuid(), title: 'JavaScript React', snippet: 'console.log(789)'},
-      { id: uuid(), title: 'JavaScript Angular', snippet: 'console.log(111)'},
-      { id: uuid(), title: 'JavaScript Vue', snippet: 'console.log(222)'},
-    ]
+class SnippetList extends Component {
+  componentDidMount() {
+    this.props.getSnippets();
   }
 
   render() {
-    const { snippets } = this.state;
+    const { snippets } = this.props.snippet;
     return (
       <Container>
         <Button
@@ -62,4 +59,13 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+SnippetList.propTypes = {
+  getSnippets: PropTypes.func.isRequired,
+  snippet: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  snippet: state.snippet
+});
+
+export default connect(mapStateToProps, { getSnippets })(SnippetList);

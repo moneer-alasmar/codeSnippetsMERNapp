@@ -1,0 +1,3 @@
+export const GET_SNIPPETS = 'GET_SNIPPETS';
+export const ADD_SNIPPET = 'ADD_SNIPPET';
+export const DELETE_SNIPPET = 'DELETE_SNIPPET';
