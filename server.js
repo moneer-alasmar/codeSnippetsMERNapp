@@ -22,8 +22,6 @@ mongoose
   .then(() => console.log("MongoDB Connected!"))
   .catch(() => console.log(err));
 
-const port = process.env.PORT || 5000;
-
 // Using Routes
 app.use("/api/snippets", snippets);
 
@@ -37,8 +35,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/app/build/index.html"));
-});
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port: ${port}`));
