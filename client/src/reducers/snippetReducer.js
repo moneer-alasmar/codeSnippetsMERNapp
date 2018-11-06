@@ -1,4 +1,3 @@
-import uuid from "uuid";
 import {
   GET_SNIPPETS,
   ADD_SNIPPET,
