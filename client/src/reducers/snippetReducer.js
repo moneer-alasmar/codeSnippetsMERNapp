@@ -1,21 +1,23 @@
 import uuid from "uuid";
-import { GET_SNIPPETS, ADD_SNIPPET, DELETE_SNIPPET } from "../actions/types";
+import {
+  GET_SNIPPETS,
+  ADD_SNIPPET,
+  DELETE_SNIPPET,
+  SNIPPETS_LOADING
+} from "../actions/types";
 
 const initialState = {
-  snippets: [
-    { id: uuid(), title: "JavaScript", snippet: "console.log(123)" },
-    { id: uuid(), title: "JavaScript ES6", snippet: "console.log(456)" },
-    { id: uuid(), title: "JavaScript React", snippet: "console.log(789)" },
-    { id: uuid(), title: "JavaScript Angular", snippet: "console.log(111)" },
-    { id: uuid(), title: "JavaScript Vue", snippet: "console.log(222)" }
-  ]
+  snippets: [],
+  loading: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_SNIPPETS:
       return {
-        ...state
+        ...state,
+        snippets: action.payload,
+        loading: false
       };
     case DELETE_SNIPPET:
       return {
@@ -28,6 +30,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         snippets: [action.payload, ...state.snippets]
+      };
+    case SNIPPETS_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;
