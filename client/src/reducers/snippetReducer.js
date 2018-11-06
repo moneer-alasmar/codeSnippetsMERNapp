@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         snippets: state.snippets.filter(
-          snippet => snippet.id !== action.payload
+          snippet => snippet._id !== action.payload
         )
       };
     case ADD_SNIPPET:

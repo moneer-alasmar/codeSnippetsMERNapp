@@ -11,8 +11,8 @@ class SnippetList extends Component {
     this.props.getSnippets();
   }
 
-  onDeleteClick = id => {
-    this.props.deleteSnippet(id);
+  onDeleteClick = _id => {
+    this.props.deleteSnippet(_id);
   };
 
   render() {
@@ -21,14 +21,14 @@ class SnippetList extends Component {
       <Container>
         <ListGroup>
           <TransitionGroup className="snippet-list">
-            {snippets.map(({ id, title, snippet }) => (
-              <CSSTransition key={id} timeout={500} classNames="fade">
+            {snippets.map(({ _id, title, snippet }) => (
+              <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
                   <Button
                     className="remove-btn mr-2"
                     color="danger"
                     size="sm"
-                    onClick={this.onDeleteClick.bind(this, id)}
+                    onClick={this.onDeleteClick.bind(this, _id)}
                   >
                     &times;
                   </Button>

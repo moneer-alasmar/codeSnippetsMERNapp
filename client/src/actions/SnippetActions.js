@@ -16,18 +16,22 @@ export const getSnippets = () => dispatch => {
   );
 };
 
-export const deleteSnippet = id => {
-  return {
-    type: DELETE_SNIPPET,
-    payload: id
-  };
+export const addSnippet = snippet => dispatch => {
+  axios.post("/api/snippets", snippet).then(res =>
+    dispatch({
+      type: ADD_SNIPPET,
+      payload: res.data
+    })
+  );
 };
 
-export const addSnippet = snippet => {
-  return {
-    type: ADD_SNIPPET,
-    payload: snippet
-  };
+export const deleteSnippet = _id => dispatch => {
+  axios.delete(`/api/snippets/${_id}`).then(res =>
+    dispatch({
+      type: DELETE_SNIPPET,
+      payload: _id
+    })
+  );
 };
 
 export const setSnippetsLoading = () => {

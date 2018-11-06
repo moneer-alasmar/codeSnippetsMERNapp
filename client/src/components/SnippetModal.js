@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 import { connect } from "react-redux";
 import { addSnippet } from "../actions/SnippetActions";
-import uuid from "uuid";
 
 class SnippetModal extends Component {
   state = {
@@ -34,7 +33,6 @@ class SnippetModal extends Component {
     e.preventDefault();
 
     const newSnippet = {
-      id: uuid(),
       title: this.state.title,
       snippet: this.state.snippet
     };
