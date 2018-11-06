@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, Button } from "reactstrap";
+import {
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Button,
+  Row,
+  Col
+} from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 // import uuid from 'uuid'; USED FOR TESTING
 import { connect } from "react-redux";
@@ -21,18 +28,26 @@ class SnippetList extends Component {
       <Container>
         <ListGroup>
           <TransitionGroup className="snippet-list">
-            {snippets.map(({ _id, title, snippet }) => (
+            {snippets.map(({ _id, title, snippet, date }) => (
               <CSSTransition key={_id} timeout={500} classNames="fade">
                 <ListGroupItem>
-                  <Button
-                    className="remove-btn mr-2"
-                    color="danger"
-                    size="sm"
-                    onClick={this.onDeleteClick.bind(this, _id)}
-                  >
-                    &times;
-                  </Button>
-                  {title}, {snippet}
+                  <Row>
+                    <Col>
+                      <Button
+                        className="remove-btn mr-2 float-right"
+                        color="danger"
+                        size="sm"
+                        onClick={this.onDeleteClick.bind(this, _id)}
+                      >
+                        &times;
+                      </Button>
+                      <h5>Title: {title}</h5>
+
+                      <h5>Code: </h5>
+                      <code>{snippet}</code>
+                      <p className="float-right">{date}</p>
+                    </Col>
+                  </Row>
                 </ListGroupItem>
               </CSSTransition>
             ))}
